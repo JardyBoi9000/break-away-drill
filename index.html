@@ -41,6 +41,9 @@
             background-color: #dddddd;
             cursor: not-allowed;
         }
+        #delay-selector {
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +59,16 @@
         <button onclick="selectNumber(7)">7</button>
         <button onclick="selectNumber(8)">8</button>
         <button onclick="selectNumber(9)">9</button>
+    </div>
+    <div id="delay-selector">
+        <label for="delay">Select start delay (seconds):</label>
+        <select id="delay" name="delay">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
     </div>
     <button id="start-button" onclick="startRNG()" disabled>Start</button>
     <p id="result"></p>
