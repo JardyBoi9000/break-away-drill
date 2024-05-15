@@ -8,16 +8,56 @@
             text-align: center;
             margin-top: 50px;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px;
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        .number-pad button {
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .number-pad button:hover {
+            background-color: #45a049;
+        }
+        #start-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #start-button:disabled {
+            background-color: #dddddd;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
     <h1>Random Number Generator</h1>
-    <input type="number" id="chosenNumber" placeholder="Enter a number (1-9)" min="1" max="9">
-    <button onclick="startRNG()">Start</button>
+    <div class="number-pad" id="number-buttons">
+        <!-- Numbered buttons for user to select -->
+        <button onclick="selectNumber(1)">1</button>
+        <button onclick="selectNumber(2)">2</button>
+        <button onclick="selectNumber(3)">3</button>
+        <button onclick="selectNumber(4)">4</button>
+        <button onclick="selectNumber(5)">5</button>
+        <button onclick="selectNumber(6)">6</button>
+        <button onclick="selectNumber(7)">7</button>
+        <button onclick="selectNumber(8)">8</button>
+        <button onclick="selectNumber(9)">9</button>
+    </div>
+    <button id="start-button" onclick="startRNG()" disabled>Start</button>
     <p id="result"></p>
 
     <!-- Audio elements for each number -->
