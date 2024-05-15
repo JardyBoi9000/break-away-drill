@@ -12,6 +12,7 @@ function startRNG() {
         return;
     }
 
+    const delay = parseInt(document.getElementById('delay').value) * 1000; // Get the delay in milliseconds
     const resultElement = document.getElementById('result');
     resultElement.innerText = 'Generating...';
 
@@ -54,5 +55,5 @@ function startRNG() {
                 clearInterval(interval); // Safety stop in case the chosen number hasn't been called by the 12th number
             }
         }, 500);
-    }, 2000); // 2-second delay before starting
+    }, delay); // Use the selected delay before starting
 }
