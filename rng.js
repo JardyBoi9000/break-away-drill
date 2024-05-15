@@ -14,6 +14,7 @@ function startRNG() {
     // Function to play the audio for the given number
     function playNumberAudio(number) {
         const audioElement = document.getElementById(`audio-${number}`);
+        audioElement.currentTime = 0; // Reset audio to the start
         audioElement.play();
     }
 
