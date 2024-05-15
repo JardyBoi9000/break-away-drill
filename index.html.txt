@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+    <input type="number" id="chosenNumber" placeholder="Enter a number (1-9)" min="1" max="9">
+    <button onclick="startRNG()">Start</button>
+    <p id="result"></p>
+    <script src="rng.js"></script>
+</body>
+</html>
