@@ -11,10 +11,12 @@ function startRNG() {
     let randomNumber;
     let interval;
 
-    // Function to speak the number with an increased speed
+    // Function to speak the number with a very high speed
     function speakNumber(number) {
         const msg = new SpeechSynthesisUtterance(number.toString());
         msg.rate = 10; // Significantly increase the rate for faster speech
+        msg.pitch = 1; // Keep pitch normal
+        msg.volume = 1; // Ensure volume is at max
         window.speechSynthesis.speak(msg);
     }
 
