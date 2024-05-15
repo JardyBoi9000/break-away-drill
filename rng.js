@@ -1,4 +1,7 @@
 let chosenNumber = null;
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.continuous = false;
+recognition.lang = 'en-US';
 
 function selectNumber(number) {
     chosenNumber = number;
@@ -55,4 +58,23 @@ function startRNG() {
             playNumberAudio(randomNumber);  // Play the matched number audio
         }
     }, 500);
+}
+
+function startVoiceRecognition() {
+    recognition.start();
+    recognition.onresult = function(event) {
+        const spokenText = event.results[0][0].transcript.toLowerCase();
+        console.log(`Recognized speech: ${spokenText}`);
+        const number = parseInt(spokenText);
+        if (!isNaN(number) && number >= 1 && number <= 9) {
+            selectNumber(number);
+        } else if (spokenText.includes('start')) {
+            startRNG();
+        } else {
+            alert('Please say a number between 1 and 9, or say "start" to begin.');
+        }
+    };
+    recognition.onerror = function(event) {
+        console.error('Speech recognition error:', event.error);
+    };
 }
