@@ -1,7 +1,14 @@
+let chosenNumber = null;
+
+function selectNumber(number) {
+    chosenNumber = number;
+    document.getElementById('result').innerText = `You selected: ${number}`;
+    document.getElementById('start-button').disabled = false;
+}
+
 function startRNG() {
-    const chosenNumber = parseInt(document.getElementById('chosenNumber').value);
-    if (isNaN(chosenNumber) || chosenNumber < 1 || chosenNumber > 9) {
-        alert('Please enter a valid number between 1 and 9.');
+    if (chosenNumber === null) {
+        alert('Please select a number between 1 and 9.');
         return;
     }
 
@@ -13,9 +20,12 @@ function startRNG() {
 
     // Function to play the audio for the given number
     function playNumberAudio(number) {
+        console.log(`Playing audio for number: ${number}`);
         const audioElement = document.getElementById(`audio-${number}`);
         audioElement.currentTime = 0; // Reset audio to the start
-        audioElement.play();
+        audioElement.play().catch(error => {
+            console.error('Audio play failed:', error);
+        });
     }
 
     // Start generating random numbers after 1 second
