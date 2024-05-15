@@ -11,13 +11,10 @@ function startRNG() {
     let randomNumber;
     let interval;
 
-    // Function to speak the number with a very high speed
-    function speakNumber(number) {
-        const msg = new SpeechSynthesisUtterance(number.toString());
-        msg.rate = 10; // Significantly increase the rate for faster speech
-        msg.pitch = 1; // Keep pitch normal
-        msg.volume = 1; // Ensure volume is at max
-        window.speechSynthesis.speak(msg);
+    // Function to play the audio for the given number
+    function playNumberAudio(number) {
+        const audioElement = document.getElementById(`audio-${number}`);
+        audioElement.play();
     }
 
     // Start generating random numbers after 1 second
@@ -25,7 +22,7 @@ function startRNG() {
         interval = setInterval(() => {
             randomNumber = Math.floor(Math.random() * 9) + 1;
             resultElement.innerText = randomNumber;
-            speakNumber(randomNumber);  // Speak the random number
+            playNumberAudio(randomNumber);  // Play the random number audio
         }, 500);
     }, 1000);
 
@@ -33,7 +30,7 @@ function startRNG() {
     const endTimeout = setTimeout(() => {
         clearInterval(interval);
         resultElement.innerText = `Generated your number: ${chosenNumber}`;
-        speakNumber(chosenNumber);  // Speak the chosen number
+        playNumberAudio(chosenNumber);  // Play the chosen number audio
     }, 7000);
 
     // Check every 500ms if the random number matches the chosen number after the first second
@@ -44,7 +41,7 @@ function startRNG() {
             clearInterval(interval);
             clearInterval(checkInterval);
             resultElement.innerText = `Generated your number: ${randomNumber}`;
-            speakNumber(randomNumber);  // Speak the matched number
+            playNumberAudio(randomNumber);  // Play the matched number audio
         }
     }, 500);
 }
