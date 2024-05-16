@@ -30,9 +30,14 @@ function startRNG() {
         });
     }
 
+    // Function to generate a random delay between 250ms and 750ms
+    function getRandomDelay() {
+        return Math.floor(Math.random() * 500) + 250;
+    }
+
     // Ensure the chosen number is called out within the first 12 numbers, but not in the first two numbers
     const startInterval = setTimeout(() => {
-        interval = setInterval(() => {
+        function generateNumber() {
             count++;
             if (count <= 2 || (count <= 12 && Math.random() < 0.8)) {
                 // Avoid calling the chosen number in the first two counts and with some probability up to the 12th count
@@ -42,18 +47,22 @@ function startRNG() {
             } else {
                 randomNumber = chosenNumber;
             }
-            
+
             resultElement.innerText = randomNumber;
             playNumberAudio(randomNumber);  // Play the random number audio
 
             if (randomNumber === chosenNumber) {
-                clearInterval(interval); // Stop the interval when the chosen number is reached
                 resultElement.innerText = `Generated your number: ${chosenNumber}`;
+            } else {
+                setTimeout(generateNumber, getRandomDelay());
             }
 
-            if (count >= 12) {
-                clearInterval(interval); // Safety stop in case the chosen number hasn't been called by the 12th number
+            if (count >= 12 && randomNumber !== chosenNumber) {
+                clearTimeout(interval); // Safety stop in case the chosen number hasn't been called by the 12th number
+                resultElement.innerText = `Generated your number: ${chosenNumber}`;
             }
-        }, 500);
+        }
+
+        generateNumber();
     }, delay); // Use the selected delay before starting
 }
