@@ -4,3 +4,5 @@ the way it works is you pick a number and a delay time and press start befor you
 the other number being said are only to fill the void and perhaps have you pay attation to something else while your swinging your rope.
 once your number is said then you throw your rope. hopefully due to the random nature of the number calling this app will have you throwing your rope at diffrent points in your swing.
 i probably explaind thsi poorly... any ways have fun with this RNG and the soothing tones of my voice saying random numbers.
+
+iv you made it this far... im sorry for your stroke from struggeling through all my typos i dont care. the code works.
