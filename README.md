@@ -1,3 +1,6 @@
+something is broken and i want to turn it into a tone that is short and then a slightly higher pitch tone that is long for when the roper is suposed to throw the rope instead of the numbers.
+
+
 # this app is a timing drill for calf roping but could probably help in other ways aswell in sports or other activities that require a sudden shift in whatever your doing.
 # you choose a number and press start and that the program says random numbers untill it calls your number and that is when the roper should throw their rope. 
 # it is very simple and does the job, i have also set in random intervals between the numbers being called to help break the cadence that a roper might find themself in.
